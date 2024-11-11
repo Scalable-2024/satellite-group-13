@@ -1,8 +1,11 @@
 import time
 from flask import Flask, request, g
+
+from config.config import load_from_config_file
 from routers.earth_router import router as main_router
 from config.constants import X_BOBB_HEADER, ERROR_INVALID_BOBB_HEADER, X_BOBB_OPTIONAL_HEADER
 from helpers.response_helper import create_response
+from utils.crypto_utils import generate_keys
 from utils.headers import BobbHeaders
 from utils.optional_headers import BobbOptionalHeaders
 
@@ -62,4 +65,6 @@ def add_custom_headers_to_response(response):
 
 
 if __name__ == "__main__":
+    name = load_from_config_file()["name"]
+    generate_keys(name)
     app.run(debug=True, port=30001)
