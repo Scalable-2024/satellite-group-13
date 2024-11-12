@@ -1,11 +1,11 @@
 
 # utils/crypto_utils/data_encryption.py
-from crypto_utils.key_management import read_private_key, read_public_key
+import os
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-import os
+from utils.crypto_utils import read_private_key, read_public_key
 
 # Default chunk size in bytes (configurable)
 DEFAULT_CHUNK_SIZE = 1024 * 1024  # 1 MB
