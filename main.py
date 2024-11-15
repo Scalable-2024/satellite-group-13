@@ -8,6 +8,7 @@ from helpers.response_helper import create_response
 from utils.crypto_utils import generate_keys
 from utils.headers import BobbHeaders
 from utils.optional_headers import BobbOptionalHeaders
+from location_updater import start_location_update
 
 app = Flask(__name__)
 
@@ -68,3 +69,4 @@ if __name__ == "__main__":
     name = load_from_config_file()["name"]
     generate_keys(name)
     app.run(debug=True, port=30001)
+    start_location_update()
